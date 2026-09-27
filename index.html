@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Live Reviews</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <title>Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fcf9f5;
-            --box-bg: #fffcf9;
+            --bg-gradient: linear-gradient(135deg, #fcf9f5 0%, #f4ede4 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
             --border-color: #eadecd;
-            --text-color: #7b6f65;
-            --hover-bg: #f3eae1;
-            --accent-pink: #f4d6d8;
+            --text-main: #6e6157;
+            --text-sub: #9c8b7e;
+            --hover-bg: #fff5ee;
+            --hover-border: #d4b5b7;
+            --shadow: 0 12px 35px rgba(186, 170, 157, 0.18);
         }
 
         * {
@@ -23,18 +25,45 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background: var(--bg-gradient);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px 15px;
+            justify-content: center;
+            padding: 20px;
         }
 
-        .container {
+        .main-wrapper {
             width: 100%;
-            max-width: 480px;
+            max-width: 400px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1.5px solid var(--border-color);
+            border-radius: 32px;
+            padding: 35px 24px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        /* ตกแต่งความน่ารักสไตล์พาสเทล */
+        .main-wrapper::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        .main-wrapper::after {
+            content: '🤍';
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 12px;
+            opacity: 0.6;
         }
 
         /* ส่วนหัว */
@@ -42,150 +71,84 @@
             text-align: center;
             font-size: 28px;
             font-weight: 700;
-            color: #726359;
-            margin-bottom: 20px;
+            color: var(--text-main);
+            margin-bottom: 28px;
             letter-spacing: 0.5px;
         }
 
-        /* บอดี้: Grid 2 คอลัมน์ ตามตำแหน่งในรูปวาด */
+        /* บอดี้ Grid 2 คอลัมน์ ตามต้นฉบับ 100% */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 25px;
+            gap: 16px;
         }
 
         .contact-box {
-            background-color: var(--box-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 18px;
-            padding: 20px 10px;
+            background-color: #faf6f0;
+            border: 1.5px solid #e8dbd1;
+            border-radius: 20px;
+            padding: 20px 12px;
             text-align: center;
             text-decoration: none;
-            color: var(--text-color);
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(212, 197, 185, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .contact-box:hover {
-            background-color: var(--hover-bg);
-            transform: translateY(-2px);
-        }
-
-        /* ส่วนที่อัพเดทเรียลไทม์ (รีวิวเด้งขึ้นสวยๆ) */
-        .realtime-reviews-section {
-            background-color: var(--box-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 18px;
-            padding: 16px;
-            box-shadow: 0 4px 10px rgba(212, 197, 185, 0.15);
-        }
-
-        .reviews-title {
+            color: var(--text-main);
             font-size: 15px;
-            font-weight: 700;
-            color: #726359;
-            margin-bottom: 12px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
             display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 6px;
         }
 
-        .reviews-container {
-            height: 90px;
-            overflow: hidden;
-            position: relative;
+        .contact-box:hover {
+            background-color: var(--hover-bg);
+            border-color: var(--hover-border);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 197, 185, 0.3);
+            color: #5c4f45;
         }
 
-        .review-item {
-            position: absolute;
-            width: 100%;
-            background: #faf5f0;
-            border: 1px solid #ebdcd0;
-            border-radius: 12px;
-            padding: 10px 14px;
-            font-size: 13px;
-            color: #7b6f65;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-
-        .review-item.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .review-author {
-            font-weight: 700;
-            color: #9c8477;
+        .contact-icon {
+            font-size: 20px;
             margin-bottom: 2px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="main-wrapper">
         <!-- ส่วนหัว -->
         <h1 class="main-heading">Contact</h1>
 
-        <!-- บอดี้ ช่องทางติดต่อตามรูป -->
+        <!-- บอดี้ -->
         <div class="contact-grid">
-            <a href="#" class="contact-box">Line</a>
-            <a href="#" class="contact-box">X</a>
-            <a href="#" class="contact-box">Facebook</a>
-            <a href="#" class="contact-box">Instargram</a>
-            <a href="#" class="contact-box">Tiktok</a>
-            <a href="#" class="contact-box">Gmail</a>
-        </div>
-
-        <!-- ส่วนที่อัพเดทเรียลไทม์ (รีวิวเด้งขึ้น) -->
-        <div class="realtime-reviews-section">
-            <div class="reviews-title">
-                <span>💬</span> Real-time Live Reviews
-            </div>
-            <div class="reviews-container" id="reviewTicker">
-                <!-- รีวิวจะสลับเด้งขึ้นตรงนี้อัตโนมัติ -->
-            </div>
+            <a href="#" class="contact-box">
+                <span class="contact-icon">🍃</span>
+                <span>Line</span>
+            </a>
+            <a href="#" class="contact-box">
+                <span class="contact-icon">✖️</span>
+                <span>X</span>
+            </a>
+            <a href="#" class="contact-box">
+                <span class="contact-icon">📘</span>
+                <span>Facebook</span>
+            </a>
+            <a href="#" class="contact-box">
+                <span class="contact-icon">📸</span>
+                <span>Instargram</span>
+            </a>
+            <a href="#" class="contact-box">
+                <span class="contact-icon">🎵</span>
+                <span>Tiktok</span>
+            </a>
+            <a href="#" class="contact-box">
+                <span class="contact-icon">✉️</span>
+                <span>Gmail</span>
+            </a>
         </div>
     </div>
-
-    <script>
-        const reviews = [
-            { author: "คุณมีน", text: "บริการดีมากเลยค่ะ ตอบไวทันใจสุดๆ 🤍" },
-            { author: "คุณ 📌", text: "ส่งของเร็วแพ็คมาดีมากๆ ไว้มาอุดหนุนอีกแน่นอนค่ะ ✨" },
-            { author: "คุณเนย", text: "น่ารักมากค่ะ เป็นกันเองสุดๆ แนะนำเลยจ้า 💖" },
-            { author: "คุณเจมส์", text: "งานไว งานดี ไม่มีผิดหวังเลยครับ 👍" }
-        ];
-
-        let currentIndex = 0;
-        const container = document.getElementById('reviewTicker');
-
-        function showNextReview() {
-            container.innerHTML = '';
-            const rev = reviews[currentIndex];
-            
-            const div = document.createElement('div');
-            div.className = 'review-item';
-            div.innerHTML = `
-                <div class="review-author">${rev.author} ⭐⭐⭐⭐⭐</div>
-                <div>${rev.text}</div>
-            `;
-            
-            container.appendChild(div);
-            setTimeout(() => div.classList.add('active'), 50);
-
-            currentIndex = (currentIndex + 1) % reviews.length;
-        }
-
-        showNextReview();
-        setInterval(showNextReview, 3500); // เปลี่ยนรีวิวทุกๆ 3.5 วินาทีแบบสมูท
-    </script>
 
 </body>
 </html>
