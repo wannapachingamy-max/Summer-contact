@@ -3,19 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Pimmuki Theme</title>
-    <!-- Google Fonts: Sarabun & Quicksand สำหรับฟอนต์ละมุนๆ -->
+    <title>Contact</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fcf9f5;
-            --card-bg: #ffffff;
-            --primary-color: #d4c5b9;
-            --text-color: #7b6f65;
-            --accent-pink: #f4d6d8;
-            --accent-green: #d2ded0;
-            --border-color: #eee4dc;
-            --shadow: 0 4px 15px rgba(212, 197, 185, 0.2);
+            --bg-color: #fbf8f5;
+            --box-bg: #fffcf9;
+            --border-color: #e5d8cd;
+            --text-color: #726359;
         }
 
         * {
@@ -30,121 +25,71 @@
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             padding: 20px;
         }
 
         .container {
             width: 100%;
-            max-width: 420px;
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 30px 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
+            max-width: 400px;
         }
 
-        .header-title {
+        /* หัวข้อใหญ่ : Contact */
+        .main-heading {
             text-align: center;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
+            margin-bottom: 30px;
             color: #726359;
-            margin-bottom: 25px;
             letter-spacing: 1px;
         }
 
-        .header-title span {
-            color: #d1b2b4;
-        }
-
-        /* Grid Layout 2 คอลัมน์ ตามรูปต้นฉบับ */
+        /* บอดี้ Grid 2 คอลัมน์ ตำแหน่งตามรูปต้นฉบับ */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 16px;
         }
 
-        .contact-card {
-            background: #faf6f0;
-            border: 1.5px solid #e8dbd1;
-            border-radius: 16px;
-            padding: 20px 15px;
+        .contact-box {
+            background-color: var(--box-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px 16px;
             text-align: center;
             text-decoration: none;
-            color: #7b6f65;
+            color: var(--text-color);
+            font-size: 18px;
             font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(212, 197, 185, 0.15);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 8px;
         }
 
-        .contact-card:hover {
-            background: #f2e9e1;
-            border-color: #c7b3a5;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(212, 197, 185, 0.3);
-        }
-
-        .contact-card img, .contact-card svg {
-            width: 28px;
-            height: 28px;
-            fill: #7b6f65;
-        }
-
-        /* ตกแต่งเพิ่มเติมบรรยากาศละมุนๆ */
-        .footer-note {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 13px;
-            color: #b5a49a;
+        .contact-box:hover {
+            background-color: #f3eae1;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1 class="header-title">✨ Contact 🤍</h1>
+        <!-- ส่วนหัว -->
+        <h1 class="main-heading">Contact</h1>
 
+        <!-- บอดี้ -->
         <div class="contact-grid">
-            <!-- Line -->
-            <a href="#" class="contact-card">
-                <span>🍃 Line</span>
-            </a>
-
-            <!-- X -->
-            <a href="#" class="contact-card">
-                <span>✕ X</span>
-            </a>
-
-            <!-- Facebook -->
-            <a href="#" class="contact-card">
-                <span>📘 Facebook</span>
-            </a>
-
-            <!-- Instagram -->
-            <a href="#" class="contact-card">
-                <span>📸 Instargram</span>
-            </a>
-
-            <!-- Tiktok -->
-            <a href="#" class="contact-card">
-                <span>🎵 Tiktok</span>
-            </a>
-
-            <!-- Gmail -->
-            <a href="#" class="contact-card">
-                <span>✉️ Gmail</span>
-            </a>
-        </div>
-
-        <div class="footer-note">
-            🤍 Welcome to Contact Page 🤍
+            <a href="#" class="contact-box">Line</a>
+            <a href="#" class="contact-box">X</a>
+            <a href="#" class="contact-box">Facebook</a>
+            <a href="#" class="contact-box">Instargram</a>
+            <a href="#" class="contact-box">Tiktok</a>
+            <a href="#" class="contact-box">Gmail</a>
         </div>
     </div>
 
